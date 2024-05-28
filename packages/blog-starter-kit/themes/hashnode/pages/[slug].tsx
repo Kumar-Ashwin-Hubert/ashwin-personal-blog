@@ -116,6 +116,7 @@ export default function PostOrPage(props: Props) {
 				<Layout>
 					<header
 						ref={headerRef}
+						style={{ backgroundColor: '#131414' }}
 						className={twJoin(
 							'blog-header',
 							'z-50 w-full border-b',
@@ -126,7 +127,7 @@ export default function PostOrPage(props: Props) {
 						<PostPageNavbar publication={publication} ref={headerRef} />
 					</header>
 					<Container>
-						<article className="flex flex-col items-start gap-10 pb-10">
+						<article className="flex flex-col items-start pb-10">
 							<Post {...props} />
 						</article>
 					</Container>
@@ -178,7 +179,7 @@ export default function PostOrPage(props: Props) {
 				</Head>
 				<Header isHome={false} />
 				<Container>
-					<article className="flex flex-col items-start gap-10 pb-10">
+					<article className="flex flex-col items-start pb-10">
 						<Page {...props} />
 					</article>
 				</Container>

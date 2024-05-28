@@ -62,10 +62,11 @@ function PublicationSidebar(props: Props) {
           <div
             ref={sidebarHeaderRef}
             className="blog-sidebar-header w-full shrink-0 bg-white py-6 dark:bg-slate-900"
+            style={{ backgroundColor: 'rgb(19, 20, 20)' }}
           >
             <div
               className={twJoin(
-                'flex items-center justify-between pl-8 pr-4', 'dark:text-white',
+                'flex items-center justify-between pl-8 pr-4', 'text-white',
               )}
             >
               <PublicationLogo publication={publication} size="xs" withProfileImage isPostPage={isPostPage} />

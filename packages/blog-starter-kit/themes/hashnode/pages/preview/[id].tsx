@@ -74,6 +74,7 @@ export default function Post({ publication, draft }: Props) {
 			<Layout>
 				<header
 					ref={headerRef}
+					style={{ backgroundColor: '#131414' }}
 					className={twJoin(
 						'blog-header',
 						'z-50 w-full border-b',
