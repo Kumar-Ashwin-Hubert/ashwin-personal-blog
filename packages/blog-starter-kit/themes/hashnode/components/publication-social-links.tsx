@@ -73,7 +73,7 @@ function PublicationSocialLinks(props: Props) {
             'blog-social-media-section',
             'flex flex-row flex-wrap gap-y-2',
             !isSidebar
-              ? 'justify-center gap-x-1.5 text-slate-700 dark:text-slate-300'
+              ? 'justify-center gap-x-1.5 text-white'
               : 'gap-x-6 gap-y-4 text-slate-600 dark:text-slate-200',
           )}
         >

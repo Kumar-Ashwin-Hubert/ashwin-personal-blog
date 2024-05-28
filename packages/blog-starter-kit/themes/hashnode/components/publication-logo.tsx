@@ -91,7 +91,7 @@ const DefaultLogo = ({
       className={twJoin(
         'blog-title',
         textStyles[size],
-        'break-words font-heading font-semibold leading-snug md:font-bold','dark:text-white',
+        'break-words font-heading font-semibold leading-snug md:font-bold','text-white',
       )}
     >
       <Link

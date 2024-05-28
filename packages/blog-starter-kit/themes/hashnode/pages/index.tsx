@@ -140,6 +140,7 @@ export default function Index(
 					{publication.about?.html ? (
 						<div
 							className="blog-author-container border-b dark:border-slate-800"
+							style={{ backgroundColor: '#1314141a'}}
 						>
 							<div
 								className={twJoin(

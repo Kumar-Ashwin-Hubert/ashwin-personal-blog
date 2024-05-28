@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { forwardRef } from 'react';
 import { twJoin } from 'tailwind-merge';
@@ -21,7 +22,24 @@ type Props = {
 
 const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 	const { publication } = props;
+	const [currentUrl, setCurrentUrl] = useState('');
 
+	useEffect(() => {
+		// Access window object only when it's available (i.e., on the client side)
+		if (typeof window !== 'undefined') {
+			setCurrentUrl(window.location.href);
+			const handleUrlChange = () => {
+				setCurrentUrl(window.location.href);
+		  	};
+		  
+		  	window.addEventListener('popstate', handleUrlChange);
+		  
+			return () => {
+				window.removeEventListener('popstate', handleUrlChange);
+			};
+		}
+	  }, []);
+	
 	useStickyNavScroll({ elRef: ref });
 
 	const commonIconBtnStyles = getCommonBtnStyles();
@@ -31,7 +49,7 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 			<div className="relative z-40 flex flex-row items-center justify-between pb-2 pt-8 md:py-4">
 				<div
 					className={twJoin(
-						'mb-2 flex flex-row items-center md:mb-0','dark:text-white',
+						'mb-2 flex flex-row items-center md:mb-0','text-white',
 					)}
 				>
 					<HeaderTooltip
@@ -59,11 +77,11 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 
 				<div
 					className={twJoin(
-						'flex flex-row items-center','dark:text-white',
+						'flex flex-row items-center','text-white',
 					)}
 				>
 					<HeaderBlogSearch publication={publication} />
-					<Button as="a" href="#" type="primary" label="Sign up" />
+					<Button as="a" href={ "https://hashnode.com/login?next=" + currentUrl } type="primary" label="Sign up" />
 				</div>
 			</div>
 

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { twJoin } from 'tailwind-merge';
 import { lightOrDark } from '../utils/commonUtils';
 import { useAppContext } from './contexts/appContext';
@@ -16,9 +17,27 @@ type Props = {
 export const Header = (props: Props) => {
 	const { currentMenuId, isHome } = props;
 	const { publication } = useAppContext();
+	const [currentUrl, setCurrentUrl] = useState('');
+
+	useEffect(() => {
+		// Access window object only when it's available (i.e., on the client side)
+		if (typeof window !== 'undefined') {
+			setCurrentUrl(window.location.href);
+			const handleUrlChange = () => {
+				setCurrentUrl(window.location.href);
+		  	};
+		  
+		  	window.addEventListener('popstate', handleUrlChange);
+		  
+			return () => {
+				window.removeEventListener('popstate', handleUrlChange);
+			};
+		}
+	  }, []);
 
 	return (
 		<header
+			style={{ backgroundColor: '#131414' }}
 			className="blog-header relative z-50 w-full border-b border-black/10 bg-white bg-opacity-70 dark:border-white/10 dark:bg-slate-900 dark:bg-opacity-70"
 		>
 			<div className="container mx-auto px-2 md:px-4 2xl:px-10">
@@ -27,7 +46,7 @@ export const Header = (props: Props) => {
 						{/* Navigation for mobile view */}
 						<div
 							className={twJoin(
-								'md:hidden','dark:text-white',
+								'md:hidden','text-white',
 							)}
 						>
 							<HeaderLeftSidebar publication={publication} />
@@ -39,11 +58,11 @@ export const Header = (props: Props) => {
 
 					<div
 						className={twJoin(
-							'flex flex-row items-center','dark:text-white',
+							'flex flex-row items-center','text-white',
 						)}
 					>
 						<HeaderBlogSearch publication={publication} />
-						<Button as="a" href="#" type="primary" label="Sign up" />
+						<Button as="a" href={ "https://hashnode.com/login?next=" + currentUrl } type="primary" label="Sign up" />
 					</div>
 				</div>
 
