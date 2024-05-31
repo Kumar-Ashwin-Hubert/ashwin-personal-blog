@@ -91,29 +91,52 @@ export default function Index(
 			});
 	};
 
+	const description = publication.descriptionSEO || publication.title || `${publication.author.name}'s Blog`;
+
+	const title = publication.displayTitle || publication.title || 'Hashnode Blog Starter Kit';
+
 	return (
 		<AppProvider publication={publication}>
 			<Layout>
 				<Head>
 					<title>
-						{publication.displayTitle || publication.title || 'Hashnode Blog Starter Kit'}
+						{title}
 					</title>
+					<link 
+						rel="canonical" 
+						href={publication.url} />
 					<meta
 						name="description"
-						content={
-							publication.descriptionSEO || publication.title || `${publication.author.name}'s Blog`
-						}
+						content={description}
+					/>
+					<meta 
+						property="og:title"
+						content={title}
+					/>
+					<meta 
+						property="og:description"
+						content={description}
+					/>
+					<meta 
+						property="og:site_name"
+						content={title}
+					/>
+					<meta 
+						property="og:type"
+						content="website"
+					/>
+					<meta 
+						property="og:url"
+						content={publication.url}
 					/>
 					<meta property="twitter:card" content="summary_large_image" />
 					<meta
 						property="twitter:title"
-						content={publication.displayTitle || publication.title || 'Hashnode Blog Starter Kit'}
+						content={title}
 					/>
 					<meta
 						property="twitter:description"
-						content={
-							publication.descriptionSEO || publication.title || `${publication.author.name}'s Blog`
-						}
+						content={description}
 					/>
 					<meta
 						property="og:image"
