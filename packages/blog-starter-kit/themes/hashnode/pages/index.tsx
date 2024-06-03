@@ -27,6 +27,7 @@ import PublicationMeta from '../components/publication-meta';
 import { resizeImage } from '../utils/image';
 
 import { addMicrosoftClarity } from '@starter-kit/utils/analytics/addMicrosoftClarity';
+import { addAzureApplicationInsights } from '@starter-kit/utils/analytics/addAzureApplicationInsights';
 
 const REVALIDATION_INTERVAL_POST_VIEWS_ACTIVE = 60 * 60; // 1 hour
 const REVALIDATION_INTERVAL = 60 * 60 * 24 * 30; // 1 month
@@ -150,6 +151,12 @@ export default function Index(
 						type="text/javascript"
 						dangerouslySetInnerHTML={{
 							__html: addMicrosoftClarity(),
+						}}
+					/>
+					<script
+						type="text/javascript"
+						dangerouslySetInnerHTML={{
+							__html: addAzureApplicationInsights(),
 						}}
 					/>
 					<script

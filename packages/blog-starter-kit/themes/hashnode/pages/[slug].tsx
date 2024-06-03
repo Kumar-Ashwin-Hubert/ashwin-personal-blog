@@ -29,6 +29,7 @@ import {
 } from '../generated/graphql';
 
 import { addMicrosoftClarity } from '@starter-kit/utils/analytics/addMicrosoftClarity';
+import { addAzureApplicationInsights } from '@starter-kit/utils/analytics/addAzureApplicationInsights';
 
 type PostProps = {
 	type: 'post';
@@ -81,6 +82,12 @@ const Post = ({ publication, post, morePosts }: PostProps) => {
 					type="text/javascript"
 					dangerouslySetInnerHTML={{
 						__html: addMicrosoftClarity(),
+					}}
+				/>
+				<script
+					type="text/javascript"
+					dangerouslySetInnerHTML={{
+						__html: addAzureApplicationInsights(),
 					}}
 				/>
 				<script
@@ -182,6 +189,12 @@ export default function PostOrPage(props: Props) {
 						type="text/javascript"
 						dangerouslySetInnerHTML={{
 							__html: addMicrosoftClarity(),
+						}}
+					/>
+					<script
+						type="text/javascript"
+						dangerouslySetInnerHTML={{
+							__html: addAzureApplicationInsights(),
 						}}
 					/>
 					<script
