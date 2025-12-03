@@ -81,7 +81,7 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 					)}
 				>
 					<HeaderBlogSearch publication={publication} />
-					<Button as="a" href={ "https://hashnode.com/login?next=" + currentUrl } type="primary" label="Sign up" />
+					<Button as="a" href={new URL("/newsletter", publication.url).toString()} type="primary" label="Subscribe" />
 				</div>
 			</div>
 
